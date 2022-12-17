@@ -1,3 +1,5 @@
+package Algorithms;
+
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
@@ -23,14 +25,15 @@ class MyCache{
     LinkedHashSet<Process> hs = new LinkedHashSet<>();
     
     public void addProcess(Process p) {
-        if (hs.size() < CACHE_SIZE) {
-            if (hs.contains(p)) {
-                hs.remove(p);
-                hs.add(p);
-            }
-            else
-                hs.add(p);
+        if (hs.contains(p)) {
+            hs.remove(p);
+            hs.add(p);
+            return;
         }
+        
+        if (hs.size() < CACHE_SIZE) {            
+            hs.add(p);
+        }        
         else {
             hs.remove(p);
             hs.add(p);
